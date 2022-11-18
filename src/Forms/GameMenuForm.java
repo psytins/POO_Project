@@ -1,8 +1,6 @@
 package Forms;
 
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class GameMenuForm {
     public JPanel mainPanel;
@@ -11,6 +9,19 @@ public class GameMenuForm {
     private JPanel bottomPanel;
     private JPanel leftPanel;
     private JPanel rightPanel;
+    private JButton startButton;
+    private JLabel sizeLabel;
+    private JLabel modeLabel;
+    private JLabel gridLabel;
+    private JLabel winLabel;
+    private JRadioButton randomRadioButton;
+    private JRadioButton misereRadioButton;
+    private JRadioButton normalRadioButton;
+    private JSlider gridSizeSlider;
+    private JSlider winSlider;
+    private JPanel gameModePanel;
+    private JLabel winNumLabel;
+    private JLabel gridSizeLabel;
 
     public GameMenuForm() {
 
