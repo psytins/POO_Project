@@ -3,12 +3,12 @@ package Forms;
 import Classes.Game;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GameForm {
     private JPanel mainPanel;
     private JPanel gamePanel;
     private JPanel infoPanel;
-    private JLabel testLabel;
 
     private Game currentGame;
 
@@ -18,7 +18,17 @@ public class GameForm {
     }
 
     public void ConstructGrid(){
-        testLabel.setText(currentGame.getPlayerOne().getUsername()); //test
+        JButton tempButton;
+        gamePanel.setLayout(new GridLayout(currentGame.getGridNumber(), currentGame.getGridNumber()));
+
+        for(int r = 0; r < currentGame.getGrid().length; r++){
+            for(int c = 0; c < currentGame.getGrid().length; c++){
+                tempButton = new JButton("");
+
+                gamePanel.add(tempButton);
+
+            }
+        }
 
     }
 

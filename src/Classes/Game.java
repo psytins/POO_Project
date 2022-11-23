@@ -21,7 +21,7 @@ public class Game {
         this.gameOptions = gameOptions;
 
         //create grid
-        this.grid = this.CreateGrid(win);
+        this.grid = this.CreateGrid(gridNumber);
     }
 
     private int[][] CreateGrid(int gridNumber){
