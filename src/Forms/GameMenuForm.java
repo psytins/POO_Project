@@ -1,5 +1,6 @@
 package Forms;
 
+import Classes.Game;
 import Classes.Player;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class GameMenuForm {
-    public JPanel mainPanel;
+    private JPanel mainPanel;
     private JPanel centerPanel;
     private JPanel topPanel;
     private JPanel bottomPanel;
@@ -78,9 +79,18 @@ public class GameMenuForm {
         Player playerOne = new Player(playerOneName);
         Player playerTwo = new Player(playerTwoName);
 
+        Game game = new Game(playerOne, playerTwo, winSlider.getValue(), gridSizeSlider.getValue(), 0);
 
-
-
+        //Open Game Form
+        JFrame gameFrame = new JFrame("TicTacToe - Game");
+        gameFrame.setContentPane(new GameForm(game).getMainPanel());
+        gameFrame.setSize(800,800);
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameFrame.setVisible(true);
+        gameFrame.setResizable(false);
     }
 
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
 }

@@ -6,15 +6,43 @@ public class Game {
 
     private Player playerTwo;
 
-    private int scorePlayerOne;
-
-    private int scorePlayerTwo;
-
     private int win;
 
-    private int grid;
+    private int gridNumber;
+    private int[][] grid;
 
     private int gameOptions;
+
+    public  Game(Player p1, Player p2, int win, int gridNumber, int gameOptions){
+        this.playerOne = p1;
+        this.playerTwo = p2;
+        this.win = win;
+        this.gridNumber  = gridNumber;
+        this.gameOptions = gameOptions;
+
+        //create grid
+        this.grid = this.CreateGrid(win);
+    }
+
+    private int[][] CreateGrid(int gridNumber){
+        int[][] finalGrid = new int[gridNumber][gridNumber];
+
+        for(int r = 0; r < gridNumber; r++){
+            for(int c = 0; c < gridNumber; c++){
+                finalGrid[r][c] = -1;
+            }
+        }
+
+        return finalGrid;
+    }
+
+    public int[][] getGrid() {
+        return grid;
+    }
+
+    public void setGrid(int[][] grid) {
+        this.grid = grid;
+    }
 
     public Player getPlayerOne() {
         return playerOne;
@@ -32,23 +60,6 @@ public class Game {
         this.playerTwo = playerTwo;
     }
 
-
-    public int getScorePlayerOne(){
-        return scorePlayerOne;
-    }
-
-    public void setScorePlayerOne(int scorePlayerOne) {
-        this.scorePlayerOne = scorePlayerOne;
-    }
-
-    public int getScorePlayerTwo(){
-        return scorePlayerTwo;
-    }
-
-    public void setScorePlayerTwo(int scorePlayerTwo) {
-        this.scorePlayerTwo = scorePlayerTwo;
-    }
-
     public int getWin(){
         return win;
     }
@@ -57,12 +68,12 @@ public class Game {
         this.win = win;
     }
 
-    public int getGrid(){
-        return grid;
+    public int getGridNumber(){
+        return gridNumber;
     }
 
-    public void setGrid(int grid) {
-        this.grid = grid;
+    public void setGridNumber(int gridNumber) {
+        this.gridNumber = gridNumber;
     }
 
     public int getGameOptions(){
