@@ -8,7 +8,7 @@ public class Main {
         mainFrame.setSize(800,800);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
-        mainFrame.setResizable(false);
+        //mainFrame.setResizable(false);
     }
 
 }

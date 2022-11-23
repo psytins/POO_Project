@@ -87,7 +87,7 @@ public class GameMenuForm {
         gameFrame.setSize(800,800);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setVisible(true);
-        gameFrame.setResizable(false);
+        //gameFrame.setResizable(false);
     }
 
     public JPanel getMainPanel() {
