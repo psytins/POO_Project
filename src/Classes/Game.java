@@ -6,6 +6,8 @@ public class Game {
 
     private Player playerTwo;
 
+    private  Player turn;
+
     private int win;
 
     private int gridNumber;
@@ -38,6 +40,14 @@ public class Game {
 
     public int[][] getGrid() {
         return grid;
+    }
+
+    public Player getTurn() {
+        return turn;
+    }
+
+    public void setTurn(Player turn) {
+        this.turn = turn;
     }
 
     public void setGrid(int[][] grid) {
