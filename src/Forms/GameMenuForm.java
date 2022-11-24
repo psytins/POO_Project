@@ -32,6 +32,10 @@ public class GameMenuForm {
     private JLabel winNumLabel;
     private JLabel gridSizeLabel;
 
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
     public GameMenuForm() {
         initialize();
         main();
@@ -39,8 +43,6 @@ public class GameMenuForm {
     }
 
     public void main(){
-
-
         //Listeners
         startButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -67,13 +69,14 @@ public class GameMenuForm {
         });
     }
 
+    //Initialize game components
     public void initialize(){
         //set labels
         gridSizeLabel.setText(gridSizeSlider.getValue() + "x" + gridSizeSlider.getValue());
         winNumLabel.setText(String.valueOf(winSlider.getValue()));
 
     }
-
+    //This function is called when the start game button is clicked
     public void StarGame(){
         String playerOneName = JOptionPane.showInputDialog("Player 1, who are you ?");
         String playerTwoName = JOptionPane.showInputDialog("Player 2, who are you ?");
@@ -90,9 +93,5 @@ public class GameMenuForm {
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setVisible(true);
         //gameFrame.setResizable(false);
-    }
-
-    public JPanel getMainPanel() {
-        return mainPanel;
     }
 }
