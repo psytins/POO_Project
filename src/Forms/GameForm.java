@@ -9,6 +9,13 @@ public class GameForm {
     private JPanel mainPanel;
     private JPanel gamePanel;
     private JPanel infoPanel;
+    private JLabel turnrLabel;
+    private JLabel scoreLabel;
+    private JRadioButton playerOneRadioButton;
+    private JRadioButton playerTwoRadioButton;
+    private JLabel playerOneScoreLabel;
+    private JLabel playerTwoScoreLabel;
+    private JButton cancelGameButton;
 
     private Game currentGame;
 
