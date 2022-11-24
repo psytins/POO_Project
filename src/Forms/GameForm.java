@@ -5,6 +5,8 @@ import Classes.Player;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Objects;
 
 public class GameForm {
@@ -30,6 +32,20 @@ public class GameForm {
     public GameForm(Game game){
         this.currentGame = game;
         initialize();
+        main();
+    }
+
+    public void main(){
+        //Listeners
+        cancelGameButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //When the Cancel button is clicked
+                //Code here
+
+
+            }
+        });
 
     }
 

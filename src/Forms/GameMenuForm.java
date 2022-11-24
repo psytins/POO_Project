@@ -1,12 +1,13 @@
 package Forms;
 
+import Program.Main;
+
 import Classes.Game;
 import Classes.Player;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
@@ -89,12 +90,9 @@ public class GameMenuForm {
 
         Game game = new Game(playerOne, playerTwo, winSlider.getValue(), gridSizeSlider.getValue(), 0);
 
-        //Open Game Form
-        JFrame gameFrame = new JFrame("TicTacToe - Game");
-        gameFrame.setContentPane(new GameForm(game).getMainPanel());
-        gameFrame.setSize(800,800);
-        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gameFrame.setVisible(true);
-        //gameFrame.setResizable(false);
+        Main.StartGame(game);
+        //Close this form
+        Main.gameMenuFrame.dispatchEvent(new WindowEvent(Main.gameMenuFrame, WindowEvent.WINDOW_CLOSING));
+
     }
 }
