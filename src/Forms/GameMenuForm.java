@@ -44,7 +44,7 @@ public class GameMenuForm {
             @Override
             public void mouseClicked(MouseEvent e) {
                 //Start Game
-                StarGame();
+                StartGame();
             }
         });
         gridSizeSlider.addChangeListener(new ChangeListener() {
@@ -72,7 +72,7 @@ public class GameMenuForm {
 
     }
 
-    public void StarGame(){
+    public void StartGame(){
         String playerOneName = JOptionPane.showInputDialog("Player 1, who are you ?");
         String playerTwoName = JOptionPane.showInputDialog("Player 2, who are you ?");
 
