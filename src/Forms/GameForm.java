@@ -19,7 +19,7 @@ public class GameForm {
     private JLabel playerTwoScoreLabel;
     private JButton cancelGameButton;
 
-    private Game currentGame;
+    private final Game currentGame;
     private Player player1;
     private Player player2;
 
