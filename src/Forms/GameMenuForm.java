@@ -74,6 +74,10 @@ public class GameMenuForm {
         //set labels
         gridSizeLabel.setText(gridSizeSlider.getValue() + "x" + gridSizeSlider.getValue());
         winNumLabel.setText(String.valueOf(winSlider.getValue()));
+        //Set Game option default (Normal)
+        normalRadioButton.setSelected(true);
+        randomRadioButton.setSelected(false);
+        misereRadioButton.setSelected(false);
 
     }
     //This function is called when the start game button is clicked
