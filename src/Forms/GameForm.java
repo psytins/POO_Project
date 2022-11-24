@@ -5,6 +5,7 @@ import Classes.Player;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class GameForm {
     private JPanel mainPanel;
@@ -22,12 +23,17 @@ public class GameForm {
     private Player player1;
     private Player player2;
 
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
     public GameForm(Game game){
         this.currentGame = game;
         initialize();
 
     }
 
+    //Initialize game components
     public void initialize(){
         //Get the players
         this.player1 = currentGame.getPlayerOne();
@@ -37,8 +43,12 @@ public class GameForm {
         //Set player labels
         playerOneRadioButton.setText(player1.getUsername());
         playerTwoRadioButton.setText(player2.getUsername());
+        //Set turn to the player 1
+        playerOneRadioButton.setSelected(true);
+        playerTwoRadioButton.setSelected(false);
     }
 
+    //Function to construct buttons grid
     public void ConstructGrid(){
         JButton tempButton;
         gamePanel.setLayout(new GridLayout(currentGame.getGridNumber(), currentGame.getGridNumber()));
@@ -52,7 +62,16 @@ public class GameForm {
         }
     }
 
-    public JPanel getMainPanel() {
-        return mainPanel;
+    //Return the winner - every time someone scores, this function is called
+    public Player GameFinished(){
+        if(Objects.equals(playerOneScoreLabel.getText(), String.valueOf(currentGame.getWin()))){
+            return player1;
+        } else if (Objects.equals(playerTwoScoreLabel.getText(), String.valueOf(currentGame.getWin()))) {
+            return player2;
+        }
+        else {
+            return null;
+        }
     }
+
 }

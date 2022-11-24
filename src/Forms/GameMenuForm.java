@@ -6,8 +6,10 @@ import Classes.Player;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 
 public class GameMenuForm {
     private JPanel mainPanel;
@@ -67,7 +69,7 @@ public class GameMenuForm {
 
     public void initialize(){
         //set labels
-        gridSizeLabel.setText(String.valueOf(gridSizeSlider.getValue()) + "x" + String.valueOf(gridSizeSlider.getValue()));
+        gridSizeLabel.setText(gridSizeSlider.getValue() + "x" + gridSizeSlider.getValue());
         winNumLabel.setText(String.valueOf(winSlider.getValue()));
 
     }
