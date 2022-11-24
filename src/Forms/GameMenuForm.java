@@ -6,8 +6,10 @@ import Classes.Player;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 
 public class GameMenuForm {
     private JPanel mainPanel;
@@ -30,6 +32,10 @@ public class GameMenuForm {
     private JLabel winNumLabel;
     private JLabel gridSizeLabel;
 
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
     public GameMenuForm() {
         initialize();
         main();
@@ -37,8 +43,6 @@ public class GameMenuForm {
     }
 
     public void main(){
-
-
         //Listeners
         startButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -65,13 +69,17 @@ public class GameMenuForm {
         });
     }
 
+    //Initialize game components
     public void initialize(){
         //set labels
-        gridSizeLabel.setText(String.valueOf(gridSizeSlider.getValue()) + "x" + String.valueOf(gridSizeSlider.getValue()));
+        gridSizeLabel.setText(gridSizeSlider.getValue() + "x" + gridSizeSlider.getValue());
         winNumLabel.setText(String.valueOf(winSlider.getValue()));
+        //Set Game option default (Normal)
+        normalRadioButton.setSelected(true);
+        randomRadioButton.setSelected(false);
+        misereRadioButton.setSelected(false);
 
     }
-
     public void StartGame(){
         String playerOneName = JOptionPane.showInputDialog("Player 1, who are you ?");
         String playerTwoName = JOptionPane.showInputDialog("Player 2, who are you ?");
@@ -88,9 +96,5 @@ public class GameMenuForm {
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setVisible(true);
         //gameFrame.setResizable(false);
-    }
-
-    public JPanel getMainPanel() {
-        return mainPanel;
     }
 }
