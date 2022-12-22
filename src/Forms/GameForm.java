@@ -2,11 +2,13 @@ package Forms;
 
 import Classes.Game;
 import Classes.Player;
+import Program.Main;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.util.Objects;
 
 public class GameForm {
@@ -41,12 +43,21 @@ public class GameForm {
             @Override
             public void mouseClicked(MouseEvent e) {
                 //When the Cancel button is clicked
-                //Code here
-
+                CancelGame();
 
             }
         });
 
+    }
+
+    //Cancel game when cancel button is pressed
+    public void CancelGame(){
+        //cancel current stats
+        GameFinished();
+        //Close actual game window
+        Main.gameFrame.dispatchEvent(new WindowEvent(Main.gameFrame, WindowEvent.WINDOW_CLOSING));
+        //Open game menu window
+        Main.StartGameMenu();
     }
 
     //Initialize game components
