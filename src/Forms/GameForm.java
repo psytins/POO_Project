@@ -110,16 +110,64 @@ public class GameForm {
 
     public void PlayerMove(Component clickedButton){
         JButton button = (JButton) clickedButton;
+
         if(Objects.equals(button.getText(), "")){ //make the move only if is empty
             button.setText(currentGame.getTurn().getUsername());
+
+            int pos1 = Integer.parseInt(clickedButton.getName().substring(0,1));
+            int pos2 = Integer.parseInt(clickedButton.getName().substring(1));
+
             if (currentGame.getTurn() == player1){
+                currentGame.getGrid()[pos1][pos2] = 1;
+                if(checkWin(1)){
+                    System.out.println(player1.getUsername() + " GANHOU");
+                    CancelGame();
+
+                }
                 ChangeTurn(player2);
             }
             else if(currentGame.getTurn() == player2){
+                currentGame.getGrid()[pos1][pos2] = 2;
+                if(checkWin(2)){
+                    System.out.println(player2.getUsername() + " GANHOU");
+                    CancelGame();
+                }
                 ChangeTurn(player1);
             }
         }
     }
+
+
+    // Method to check if a player has won the game . BUG: CHECKS 3 ONLY
+    public boolean checkWin(int player) {
+        int BOARD_SIZE = currentGame.getGridNumber();
+        int [][] board = currentGame.getGrid();
+        // Check rows
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            if (board[i][0] == player && board[i][1] == player && board[i][2] == player) {
+                return true;
+            }
+        }
+
+        // Check columns
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            if (board[0][i] == player && board[1][i] == player && board[2][i] == player) {
+                return true;
+            }
+        }
+
+        // Check diagonals
+        if (board[0][0] == player && board[1][1] == player && board[2][2] == player) {
+            return true;
+        }
+        if (board[0][2] == player && board[1][1] == player && board[2][0] == player) {
+            return true;
+        }
+
+        // No win
+        return false;
+    }
+
 
     //Return the winner - every time someone scores, this function is called
     public Player GameFinished(){
