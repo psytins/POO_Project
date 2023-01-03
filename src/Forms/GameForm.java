@@ -71,8 +71,19 @@ public class GameForm {
         playerOneRadioButton.setText(player1.getUsername());
         playerTwoRadioButton.setText(player2.getUsername());
         //Set turn to the player 1
-        playerOneRadioButton.setSelected(true);
-        playerTwoRadioButton.setSelected(false);
+        ChangeTurn(player1);
+    }
+    public void ChangeTurn(Player turnTo){
+        if(turnTo == player1) {
+            playerOneRadioButton.setSelected(true);
+            playerTwoRadioButton.setSelected(false);
+            currentGame.setTurn(player1);
+        }
+        else if (turnTo == player2) {
+            playerOneRadioButton.setSelected(false);
+            playerTwoRadioButton.setSelected(true);
+            currentGame.setTurn(player2);
+        }
     }
 
     //Function to construct buttons grid
@@ -83,8 +94,29 @@ public class GameForm {
         for(int r = 0; r < currentGame.getGrid().length; r++){
             for(int c = 0; c < currentGame.getGrid().length; c++){
                 tempButton = new JButton("");
+                tempButton.setName(String.valueOf(r) + String.valueOf(c));
+                tempButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        super.mouseClicked(e);
+                        PlayerMove(e.getComponent());
+                    }
+                });
 
                 gamePanel.add(tempButton);
+            }
+        }
+    }
+
+    public void PlayerMove(Component clickedButton){
+        JButton button = (JButton) clickedButton;
+        if(Objects.equals(button.getText(), "")){ //make the move only if is empty
+            button.setText(currentGame.getTurn().getUsername());
+            if (currentGame.getTurn() == player1){
+                ChangeTurn(player2);
+            }
+            else if(currentGame.getTurn() == player2){
+                ChangeTurn(player1);
             }
         }
     }

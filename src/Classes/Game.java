@@ -8,7 +8,7 @@ public class Game {
 
     private  Player turn;
 
-    private int win;
+    private int win; //how much rounds to win
 
     private int gridNumber;
     private int[][] grid;
