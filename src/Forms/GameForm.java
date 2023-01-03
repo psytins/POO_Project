@@ -138,29 +138,58 @@ public class GameForm {
     }
 
 
-    // Method to check if a player has won the game . BUG: CHECKS 3 ONLY
+    // Method to check if a player has won the game
     public boolean checkWin(int player) {
         int BOARD_SIZE = currentGame.getGridNumber();
         int [][] board = currentGame.getGrid();
         // Check rows
         for (int i = 0; i < BOARD_SIZE; i++) {
-            if (board[i][0] == player && board[i][1] == player && board[i][2] == player) {
+            boolean rowWin = true;
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                if (board[i][j] != player) {
+                    rowWin = false;
+                    break;
+                }
+            }
+            if (rowWin) {
                 return true;
             }
         }
 
         // Check columns
         for (int i = 0; i < BOARD_SIZE; i++) {
-            if (board[0][i] == player && board[1][i] == player && board[2][i] == player) {
+            boolean colWin = true;
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                if (board[j][i] != player) {
+                    colWin = false;
+                    break;
+                }
+            }
+            if (colWin) {
                 return true;
             }
         }
 
         // Check diagonals
-        if (board[0][0] == player && board[1][1] == player && board[2][2] == player) {
+        boolean diagonalWin1 = true;
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            if (board[i][i] != player) {
+                diagonalWin1 = false;
+                break;
+            }
+        }
+        if (diagonalWin1) {
             return true;
         }
-        if (board[0][2] == player && board[1][1] == player && board[2][0] == player) {
+
+        boolean diagonalWin2 = true;
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            if (board[i][BOARD_SIZE - i - 1] != player) {
+                diagonalWin2 = false;
+                break;
+            }
+        }
+        if (diagonalWin2) {
             return true;
         }
 
