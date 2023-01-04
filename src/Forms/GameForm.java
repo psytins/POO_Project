@@ -140,7 +140,7 @@ public class GameForm {
 
     // Method to check if a player has won the game
     public boolean checkWin(int player) {
-        int BOARD_SIZE = currentGame.getGridNumber();
+        int BOARD_SIZE = currentGame.getWin();
         int [][] board = currentGame.getGrid();
         // Check rows
         for (int i = 0; i < BOARD_SIZE; i++) {
