@@ -119,7 +119,7 @@ public class GameForm {
             if (currentGame.getTurn() == player1){
                 currentGame.getGrid()[pos1][pos2] = 1;
                 if(checkWin(1)){
-                    System.out.println(player1.getUsername() + " GANHOU");
+                    JOptionPane.showMessageDialog(null, player1.getUsername() + " GANHOU!");
                     CancelGame();
 
                 }
@@ -128,7 +128,7 @@ public class GameForm {
             else if(currentGame.getTurn() == player2){
                 currentGame.getGrid()[pos1][pos2] = 2;
                 if(checkWin(2)){
-                    System.out.println(player2.getUsername() + " GANHOU");
+                    JOptionPane.showMessageDialog(null, player2.getUsername() + " GANHOU");
                     CancelGame();
                 }
                 ChangeTurn(player1);
@@ -139,7 +139,7 @@ public class GameForm {
 
     // Method to check if a player has won the game
     public boolean checkWin(int player) {
-        int BOARD_SIZE = currentGame.getGridNumber();
+        int BOARD_SIZE = currentGame.getWin();
         int [][] board = currentGame.getGrid();
         // Check rows
         for (int i = 0; i < BOARD_SIZE; i++) {
