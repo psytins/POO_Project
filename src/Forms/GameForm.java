@@ -16,7 +16,6 @@ public class GameForm {
     private JPanel gamePanel;
     private JPanel infoPanel;
     private JLabel turnLabel;
-    private JLabel scoreLabel;
     private JRadioButton playerOneRadioButton;
     private JRadioButton playerTwoRadioButton;
     private JLabel playerOneScoreLabel;

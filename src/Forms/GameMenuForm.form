@@ -135,14 +135,14 @@
             </constraints>
             <properties>
               <inverted value="false"/>
-              <maximum value="5"/>
-              <minimum value="1"/>
+              <maximum value="8"/>
+              <minimum value="3"/>
               <minorTickSpacing value="1"/>
               <orientation value="1"/>
               <paintLabels value="false"/>
               <paintTicks value="true"/>
               <snapToTicks value="true"/>
-              <value value="1"/>
+              <value value="3"/>
             </properties>
           </component>
           <component id="cbd14" class="javax.swing.JSlider" binding="gridSizeSlider">
