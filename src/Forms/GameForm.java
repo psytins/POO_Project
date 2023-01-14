@@ -94,6 +94,10 @@ public class GameForm {
         for(int r = 0; r < currentGame.getGrid().length; r++){
             for(int c = 0; c < currentGame.getGrid().length; c++){
                 tempButton = new JButton("");
+                tempButton.setBackground(new Color(38,70,83));
+                tempButton.setForeground(new Color(244,162,97));
+                tempButton.setFont(new Font("Consolas", Font.PLAIN,20));
+                tempButton.setFocusPainted(false);
                 tempButton.setName(String.valueOf(r) + String.valueOf(c));
                 tempButton.addMouseListener(new MouseAdapter() {
                     @Override
