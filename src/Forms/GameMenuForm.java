@@ -21,17 +21,17 @@ public class GameMenuForm {
     private JPanel rightPanel;
     private JButton startButton;
     private JLabel sizeLabel;
-    private JLabel modeLabel;
-    private JLabel gridLabel;
-    private JLabel winLabel;
     private JRadioButton randomRadioButton;
     private JRadioButton misereRadioButton;
     private JRadioButton normalRadioButton;
     private JSlider gridSizeSlider;
     private JSlider winSlider;
-    private JPanel gameModePanel;
     private JLabel winNumLabel;
     private JLabel gridSizeLabel;
+    private JLabel info;
+    private JSlider gameModeSlider;
+    private JLabel gameModeLabel;
+    private JButton exitButton;
 
     public JPanel getMainPanel() {
         return mainPanel;
@@ -57,7 +57,7 @@ public class GameMenuForm {
             @Override
             public void stateChanged(ChangeEvent e) {
                 String gridSize = String.valueOf(gridSizeSlider.getValue());
-                gridSizeLabel.setText( gridSize + "x" + gridSize);
+                gridSizeLabel.setText( "Grid Size: " + gridSize + "x" + gridSize);
             }
         });
         winSlider.addChangeListener(new ChangeListener() {
@@ -65,7 +65,19 @@ public class GameMenuForm {
             @Override
             public void stateChanged(ChangeEvent e) {
                 String winNumber = String.valueOf(winSlider.getValue());
-                winNumLabel.setText(winNumber);
+                winNumLabel.setText("To Win: " + winNumber);
+            }
+        });
+        gameModeSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                switch (gameModeSlider.getValue()) {
+                    case 0 -> gameModeLabel.setText("Gamemode: Normal");
+                    case 1 -> gameModeLabel.setText("Gamemode: Misére");
+                    case 2 -> gameModeLabel.setText("Gamemode: Random Turn");
+                    default -> {
+                    }
+                }
             }
         });
     }
@@ -73,12 +85,12 @@ public class GameMenuForm {
     //Initialize game components
     public void initialize(){
         //set labels
-        gridSizeLabel.setText(gridSizeSlider.getValue() + "x" + gridSizeSlider.getValue());
-        winNumLabel.setText(String.valueOf(winSlider.getValue()));
-        //Set Game option default (Normal)
-        normalRadioButton.setSelected(true);
-        randomRadioButton.setSelected(false);
-        misereRadioButton.setSelected(false);
+        gridSizeLabel.setText("Grid Size: " + gridSizeSlider.getValue() + "x" + gridSizeSlider.getValue());
+        winNumLabel.setText("To Win: " + String.valueOf(winSlider.getValue()));
+        gameModeLabel.setText("Gamemode: Normal");
+        //0 -> Normal
+        //1 -> Misére
+        //2 -> Random Turn
 
     }
     public void StartGame(){
@@ -91,7 +103,7 @@ public class GameMenuForm {
             Player playerOne = new Player(playerOneName);
             Player playerTwo = new Player(playerTwoName);
 
-            Game game = new Game(playerOne, playerTwo, winSlider.getValue(), gridSizeSlider.getValue(), 0);
+            Game game = new Game(playerOne, playerTwo, winSlider.getValue(), gridSizeSlider.getValue(), gameModeSlider.getValue() );
 
             Main.StartGame(game);
             //Close this form

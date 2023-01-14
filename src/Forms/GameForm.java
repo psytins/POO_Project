@@ -21,6 +21,7 @@ public class GameForm {
     private JLabel playerOneScoreLabel;
     private JLabel playerTwoScoreLabel;
     private JButton cancelGameButton;
+    private JButton drawButton;
 
     private final Game currentGame;
     private Player player1;
