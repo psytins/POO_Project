@@ -95,7 +95,7 @@ public class GameForm {
             for(int c = 0; c < currentGame.getGrid().length; c++){
                 tempButton = new JButton("");
                 tempButton.setBackground(new Color(38,70,83));
-                tempButton.setForeground(new Color(244,162,97));
+                tempButton.setForeground(new Color(38,70,83));
                 tempButton.setFont(new Font("Consolas", Font.PLAIN,20));
                 tempButton.setFocusPainted(false);
                 tempButton.setName(String.valueOf(r) + String.valueOf(c));
@@ -118,10 +118,12 @@ public class GameForm {
         if(Objects.equals(button.getText(), "")){ //make the move only if is empty
             button.setText(currentGame.getTurn().getUsername());
 
+
             int pos1 = Integer.parseInt(clickedButton.getName().substring(0,1));
             int pos2 = Integer.parseInt(clickedButton.getName().substring(1));
 
             if (currentGame.getTurn() == player1){
+                button.setBackground(new Color(244,162,97));
                 currentGame.getGrid()[pos1][pos2] = 1;
                 if(checkWin(1)){
                     JOptionPane.showMessageDialog(null, player1.getUsername() + " WON!");
@@ -131,6 +133,7 @@ public class GameForm {
                 ChangeTurn(player2);
             }
             else if(currentGame.getTurn() == player2){
+                button.setBackground(new Color(231,111,81));
                 currentGame.getGrid()[pos1][pos2] = 2;
                 if(checkWin(2)){
                     JOptionPane.showMessageDialog(null, player2.getUsername() + " WON");
