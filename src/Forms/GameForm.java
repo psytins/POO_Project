@@ -18,8 +18,6 @@ public class GameForm {
     private JLabel turnLabel;
     private JRadioButton playerOneRadioButton;
     private JRadioButton playerTwoRadioButton;
-    private JLabel playerOneScoreLabel;
-    private JLabel playerTwoScoreLabel;
     private JButton cancelGameButton;
     private JButton drawButton;
 
@@ -52,8 +50,6 @@ public class GameForm {
 
     //Cancel game when cancel button is pressed
     public void CancelGame(){
-        //cancel current stats
-        GameFinished();
         //Close actual game window
         Main.gameFrame.dispatchEvent(new WindowEvent(Main.gameFrame, WindowEvent.WINDOW_CLOSING));
         //Open game menu window
@@ -202,19 +198,6 @@ public class GameForm {
 
         // No win
         return false;
-    }
-
-
-    //Return the winner - every time someone scores, this function is called
-    public Player GameFinished(){
-        if(Objects.equals(playerOneScoreLabel.getText(), String.valueOf(currentGame.getWin()))){
-            return player1;
-        } else if (Objects.equals(playerTwoScoreLabel.getText(), String.valueOf(currentGame.getWin()))) {
-            return player2;
-        }
-        else {
-            return null;
-        }
     }
 
 }
