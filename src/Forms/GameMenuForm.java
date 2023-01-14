@@ -82,17 +82,21 @@ public class GameMenuForm {
 
     }
     public void StartGame(){
-        String playerOneName = JOptionPane.showInputDialog("Player 1, who are you ?");
-        String playerTwoName = JOptionPane.showInputDialog("Player 2, who are you ?");
+        if(winSlider.getValue() > gridSizeSlider.getValue())
+            JOptionPane.showMessageDialog(mainPanel, "Win parameter can't be higher than grid size.");
+        else {
+            String playerOneName = JOptionPane.showInputDialog("Player 1, who are you ?");
+            String playerTwoName = JOptionPane.showInputDialog("Player 2, who are you ?");
 
-        Player playerOne = new Player(playerOneName);
-        Player playerTwo = new Player(playerTwoName);
+            Player playerOne = new Player(playerOneName);
+            Player playerTwo = new Player(playerTwoName);
 
-        Game game = new Game(playerOne, playerTwo, winSlider.getValue(), gridSizeSlider.getValue(), 0);
+            Game game = new Game(playerOne, playerTwo, winSlider.getValue(), gridSizeSlider.getValue(), 0);
 
-        Main.StartGame(game);
-        //Close this form
-        Main.gameMenuFrame.dispatchEvent(new WindowEvent(Main.gameMenuFrame, WindowEvent.WINDOW_CLOSING));
+            Main.StartGame(game);
+            //Close this form
+            Main.gameMenuFrame.dispatchEvent(new WindowEvent(Main.gameMenuFrame, WindowEvent.WINDOW_CLOSING));
+        }
 
     }
 }
