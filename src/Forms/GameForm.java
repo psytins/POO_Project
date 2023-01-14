@@ -120,7 +120,7 @@ public class GameForm {
             if (currentGame.getTurn() == player1){
                 currentGame.getGrid()[pos1][pos2] = 1;
                 if(checkWin(1)){
-                    JOptionPane.showMessageDialog(null, player1.getUsername() + " GANHOU!");
+                    JOptionPane.showMessageDialog(null, player1.getUsername() + " WON!");
                     CancelGame();
 
                 }
@@ -129,7 +129,7 @@ public class GameForm {
             else if(currentGame.getTurn() == player2){
                 currentGame.getGrid()[pos1][pos2] = 2;
                 if(checkWin(2)){
-                    JOptionPane.showMessageDialog(null, player2.getUsername() + " GANHOU");
+                    JOptionPane.showMessageDialog(null, player2.getUsername() + " WON");
                     CancelGame();
                 }
                 ChangeTurn(player1);
