@@ -20,6 +20,10 @@ public class GameForm {
     private JRadioButton playerTwoRadioButton;
     private JButton cancelGameButton;
     private JButton drawButton;
+    private JLabel gmModeLabel;
+    private JLabel gameModeLabel;
+    private JLabel gridSizeLabel;
+    private JLabel toWin;
 
     private final Game currentGame;
     private Player player1;
@@ -94,6 +98,15 @@ public class GameForm {
         this.player2 = currentGame.getPlayerTwo();
         //Construct the grid
         ConstructGrid();
+        toWin.setText(String.valueOf(currentGame.getWin()));
+        gridSizeLabel.setText(currentGame.getGridNumber() + "x" + currentGame.getGridNumber());
+        switch (currentGame.getGameOptions()) {
+            case 0 -> gameModeLabel.setText("Normal");
+            case 1 -> gameModeLabel.setText("Misére");
+            case 2 -> {
+                gameModeLabel.setText("Random Turn");
+            }
+        }
         //Set player labels
         playerOneRadioButton.setText("Player 1: " + player1.getUsername());
         playerTwoRadioButton.setText("Player 2: " + player2.getUsername());
