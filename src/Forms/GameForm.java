@@ -45,7 +45,38 @@ public class GameForm {
 
             }
         });
+        drawButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                DrawGame();
+            }
+        });
 
+    }
+
+    public void DrawGame(){
+        String[] choices = {"Play Again", "Exit"};
+        int option = JOptionPane.showOptionDialog(
+                null
+                , "Draw!\nWhat do you wanna do next?"
+                , "Draw!"
+                , JOptionPane.YES_NO_OPTION
+                , JOptionPane.PLAIN_MESSAGE
+                , null
+                , choices
+                , "Play Again"
+        );
+
+        switch (option) {
+            case 0 -> {
+                Game game = new Game(currentGame.getPlayerOne(), currentGame.getPlayerTwo(), currentGame.getWin(), currentGame.getGridNumber(), currentGame.getGameOptions());
+
+                //Close this form
+                Main.gameFrame.dispatchEvent(new WindowEvent(Main.gameFrame, WindowEvent.WINDOW_CLOSING));
+                Main.StartGame(game);
+            }
+            case 1 -> CancelGame();
+        }
     }
 
     //Cancel game when cancel button is pressed
@@ -64,22 +95,28 @@ public class GameForm {
         //Construct the grid
         ConstructGrid();
         //Set player labels
-        playerOneRadioButton.setText(player1.getUsername());
-        playerTwoRadioButton.setText(player2.getUsername());
+        playerOneRadioButton.setText("Player 1: " + player1.getUsername());
+        playerTwoRadioButton.setText("Player 2: " + player2.getUsername());
         //Set turn to the player 1
         ChangeTurn(player1);
     }
     public void ChangeTurn(Player turnTo){
-        playerOneRadioButton.setEnabled(false);
-        playerTwoRadioButton.setEnabled(false);
         if(turnTo == player1) {
+            playerOneRadioButton.setEnabled(true);
+            playerTwoRadioButton.setEnabled(false);
+
             playerOneRadioButton.setSelected(true);
             playerTwoRadioButton.setSelected(false);
+
             currentGame.setTurn(player1);
         }
         else if (turnTo == player2) {
+            playerOneRadioButton.setEnabled(false);
+            playerTwoRadioButton.setEnabled(true);
+
             playerOneRadioButton.setSelected(false);
             playerTwoRadioButton.setSelected(true);
+
             currentGame.setTurn(player2);
         }
     }
@@ -201,7 +238,6 @@ public class GameForm {
 
         }
     }
-
 
     // Method to check if a player has won the game
     public boolean checkWin(int player) {
