@@ -70,6 +70,8 @@ public class GameForm {
         ChangeTurn(player1);
     }
     public void ChangeTurn(Player turnTo){
+        playerOneRadioButton.setEnabled(false);
+        playerTwoRadioButton.setEnabled(false);
         if(turnTo == player1) {
             playerOneRadioButton.setSelected(true);
             playerTwoRadioButton.setSelected(false);
