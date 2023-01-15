@@ -239,6 +239,8 @@ public class GameForm {
         int boardSize = currentGame.getGridNumber();
         int winSequence = currentGame.getWin();
 
+        JButton [][] buttonsToWin = currentGame.getButtonGrid();
+
         // Check for horizontal win
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize - winSequence + 1; j++) {
@@ -250,6 +252,9 @@ public class GameForm {
                     }
                 }
                 if (win) {
+                    for (int k = j; k < j + winSequence; k++) {
+                        buttonsToWin[i][k].setBackground(Color.RED);
+                    }
                     return true;
                 }
             }
@@ -266,6 +271,9 @@ public class GameForm {
                     }
                 }
                 if (win) {
+                    for (int k = i; k < i + winSequence; k++) {
+                        buttonsToWin[k][j].setBackground(Color.RED);
+                    }
                     return true;
                 }
             }
@@ -282,6 +290,9 @@ public class GameForm {
                     }
                 }
                 if (win) {
+                    for (int k = 0; k < winSequence; k++) {
+                        buttonsToWin[i + k][j + k].setBackground(Color.RED);
+                    }
                     return true;
                 }
             }
@@ -296,6 +307,9 @@ public class GameForm {
                     }
                 }
                 if (win) {
+                    for (int k = 0; k < winSequence; k++) {
+                        buttonsToWin[i + k][j - k].setBackground(Color.RED);
+                    }
                     return true;
                 }
             }
