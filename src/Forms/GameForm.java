@@ -71,15 +71,14 @@ public class GameForm {
                 , "Play Again"
         );
 
-        switch (option) {
-            case 0 -> {
-                Game game = new Game(currentGame.getPlayerOne(), currentGame.getPlayerTwo(), currentGame.getWin(), currentGame.getGridNumber(), currentGame.getGameOptions());
+        if (option == 0) {
+            Game game = new Game(currentGame.getPlayerOne(), currentGame.getPlayerTwo(), currentGame.getWin(), currentGame.getGridNumber(), currentGame.getGameOptions());
 
-                //Close this form
-                Main.gameFrame.dispatchEvent(new WindowEvent(Main.gameFrame, WindowEvent.WINDOW_CLOSING));
-                Main.StartGame(game);
-            }
-            case 1 -> CancelGame();
+            //Close this form
+            Main.gameFrame.dispatchEvent(new WindowEvent(Main.gameFrame, WindowEvent.WINDOW_CLOSING));
+            Main.StartGame(game);
+        } else {
+            CancelGame();
         }
     }
 

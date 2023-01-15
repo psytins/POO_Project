@@ -27,6 +27,7 @@ public class Main {
         gameFrame = new JFrame("TicTacToe - Game");
         gameFrame.setContentPane(new GameForm(game).getMainPanel());
         gameFrame.setSize(800,800);
+        gameFrame.setExtendedState(gameFrame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         //gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setVisible(true);
         //gameFrame.setResizable(false);

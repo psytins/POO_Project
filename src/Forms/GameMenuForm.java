@@ -11,6 +11,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
+import java.util.Objects;
 
 public class GameMenuForm {
     private JPanel mainPanel;
@@ -106,16 +107,25 @@ public class GameMenuForm {
             JOptionPane.showMessageDialog(mainPanel, "Win parameter can't be higher than grid size.");
         else {
             String playerOneName = JOptionPane.showInputDialog("Player 1, who are you ?");
+            if(Objects.equals(playerOneName, "Gonçalo") || Objects.equals(playerOneName, "João") ){JOptionPane.showMessageDialog(mainPanel,"Uh...\nBeautiful name ;)");}
+
             String playerTwoName = JOptionPane.showInputDialog("Player 2, who are you ?");
+            if(Objects.equals(playerTwoName, "Gonçalo")|| Objects.equals(playerTwoName, "João") ){JOptionPane.showMessageDialog(mainPanel,"Uh...\nBeautiful name ;)");}
 
-            Player playerOne = new Player(playerOneName);
-            Player playerTwo = new Player(playerTwoName);
+            if(playerOneName != null && playerTwoName != null && !playerOneName.equals("") && !playerTwoName.equals(""))
+            {
+                Player playerOne = new Player(playerOneName);
+                Player playerTwo = new Player(playerTwoName);
 
-            Game game = new Game(playerOne, playerTwo, winSlider.getValue(), gridSizeSlider.getValue(), gameModeSlider.getValue() );
+                Game game = new Game(playerOne, playerTwo, winSlider.getValue(), gridSizeSlider.getValue(), gameModeSlider.getValue());
 
-            Main.StartGame(game);
-            //Close this form
-            Main.gameMenuFrame.dispatchEvent(new WindowEvent(Main.gameMenuFrame, WindowEvent.WINDOW_CLOSING));
+                Main.StartGame(game);
+                //Close this form
+                Main.gameMenuFrame.dispatchEvent(new WindowEvent(Main.gameMenuFrame, WindowEvent.WINDOW_CLOSING));
+            }
+            else {
+                JOptionPane.showMessageDialog(mainPanel,"Something went wrong!\nPlease try again.");
+            }
         }
 
     }
