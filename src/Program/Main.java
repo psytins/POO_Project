@@ -32,5 +32,4 @@ public class Main {
         gameFrame.setVisible(true);
         //gameFrame.setResizable(false);
     }
-
 }
