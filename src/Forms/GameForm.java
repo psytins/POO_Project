@@ -118,25 +118,85 @@ public class GameForm {
             int pos1 = Integer.parseInt(clickedButton.getName().substring(0,1));
             int pos2 = Integer.parseInt(clickedButton.getName().substring(1));
 
-            if (currentGame.getTurn() == player1){
-                button.setBackground(new Color(244,162,97));
-                currentGame.getGrid()[pos1][pos2] = 1;
-                if(checkWin(1)){
-                    JOptionPane.showMessageDialog(null, player1.getUsername() + " WON!");
-                    CancelGame();
+            //Normal game option
+            if(currentGame.getGameOptions()== 0){
+                if (currentGame.getTurn() == player1){
+                    button.setBackground(new Color(244,162,97));
+                    currentGame.getGrid()[pos1][pos2] = 1;
+                    if(checkWin(1)){
+                        JOptionPane.showMessageDialog(null, player1.getUsername() + " WON!");
+                        CancelGame();
 
+                    }
+                    ChangeTurn(player2);
                 }
-                ChangeTurn(player2);
-            }
-            else if(currentGame.getTurn() == player2){
-                button.setBackground(new Color(231,111,81));
-                currentGame.getGrid()[pos1][pos2] = 2;
-                if(checkWin(2)){
-                    JOptionPane.showMessageDialog(null, player2.getUsername() + " WON!");
-                    CancelGame();
+                else if(currentGame.getTurn() == player2){
+                    button.setBackground(new Color(231,111,81));
+                    currentGame.getGrid()[pos1][pos2] = 2;
+                    if(checkWin(2)){
+                        JOptionPane.showMessageDialog(null, player2.getUsername() + " WON!");
+                        CancelGame();
+                    }
+                    ChangeTurn(player1);
                 }
-                ChangeTurn(player1);
             }
+
+            //Misére game option
+            if(currentGame.getGameOptions()==1){
+                if (currentGame.getTurn() == player1){
+                    button.setBackground(new Color(244,162,97));
+                    currentGame.getGrid()[pos1][pos2] = 1;
+                    if(checkWin(1)){
+                        JOptionPane.showMessageDialog(null, player2.getUsername() + " WON!");
+                        CancelGame();
+
+                    }
+                    ChangeTurn(player2);
+                }
+                else if(currentGame.getTurn() == player2){
+                    button.setBackground(new Color(231,111,81));
+                    currentGame.getGrid()[pos1][pos2] = 2;
+                    if(checkWin(2)){
+                        JOptionPane.showMessageDialog(null, player1.getUsername() + " WON!");
+                        CancelGame();
+                    }
+                    ChangeTurn(player1);
+                }
+            }
+
+            //Random turn game option
+            if(currentGame.getGameOptions()==2){
+                if (currentGame.getTurn() == player1){
+                    button.setBackground(new Color(244,162,97));
+                    currentGame.getGrid()[pos1][pos2] = 1;
+                    if(checkWin(1)){
+                        JOptionPane.showMessageDialog(null, player1.getUsername() + " WON!");
+                        CancelGame();
+
+                    }
+                    double randomNum = Math.random();
+                    if (randomNum < 0.5) {
+                        ChangeTurn(player1);
+                    } else {
+                        ChangeTurn(player2);
+                    }
+                }
+                else if(currentGame.getTurn() == player2){
+                    button.setBackground(new Color(231,111,81));
+                    currentGame.getGrid()[pos1][pos2] = 2;
+                    if(checkWin(2)){
+                        JOptionPane.showMessageDialog(null, player2.getUsername() + " WON!");
+                        CancelGame();
+                    }
+                    double randomNum = Math.random();
+                    if (randomNum < 0.5) {
+                        ChangeTurn(player1);
+                    } else {
+                        ChangeTurn(player2);
+                    }
+                }
+            }
+
         }
     }
 
