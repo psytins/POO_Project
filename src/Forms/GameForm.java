@@ -234,100 +234,75 @@ public class GameForm {
 
     // Method to check if a player has won the game
     public boolean checkWin(int player) {
-        int BOARD_SIZE = currentGame.getWin();
-        int BOARD_SIZE_DIAG = currentGame.getGridNumber();
         int [][] board = currentGame.getGrid();
-        int numToWin = currentGame.getWin();
 
-        JButton [][] buttonsToWin = new JButton[BOARD_SIZE][BOARD_SIZE];
+        int boardSize = currentGame.getGridNumber();
+        int winSequence = currentGame.getWin();
 
-        // Check rows
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            boolean rowWin = true;
-            for (int j = 0; j < BOARD_SIZE; j++) {
-                if (board[i][j] != player) {
-                    rowWin = false;
-                    break;
+        // Check for horizontal win
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize - winSequence + 1; j++) {
+                boolean win = true;
+                for (int k = j; k < j + winSequence; k++) {
+                    if (board[i][k] != player) {
+                        win = false;
+                        break;
+                    }
                 }
-                buttonsToWin[i][j] = currentGame.getButtonGrid()[i][j];
-            }
-            if (rowWin) {
-                for (JButton btn : buttonsToWin[i]) {
-                    btn.setBackground(Color.red);
+                if (win) {
+                    return true;
                 }
-
-                return true;
             }
         }
 
-        // Check columns
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            boolean colWin = true;
-            for (int j = 0; j < BOARD_SIZE; j++) {
-                if (board[j][i] != player) {
-                    colWin = false;
-                    break;
+        // Check for vertical win
+        for (int i = 0; i < boardSize - winSequence + 1; i++) {
+            for (int j = 0; j < boardSize; j++) {
+                boolean win = true;
+                for (int k = i; k < i + winSequence; k++) {
+                    if (board[k][j] != player) {
+                        win = false;
+                        break;
+                    }
                 }
-                buttonsToWin[j][i] = currentGame.getButtonGrid()[j][i];
-            }
-            if (colWin) {
-                for (JButton[] jButtons : buttonsToWin) {
-                    jButtons[i].setBackground(Color.red);
+                if (win) {
+                    return true;
                 }
-                return true;
             }
         }
 
-//        // Check diagonals
-//        for (int i = 0; i <= BOARD_SIZE_DIAG - numToWin; i++) {
-//            for (int j = 0; j <= BOARD_SIZE_DIAG - numToWin; j++) {
-//                int count = 0;
-//                int x = i, y = j;
-//                while (x < BOARD_SIZE_DIAG && y < BOARD_SIZE_DIAG) {
-//                    if (board[x][y] == player) {
-//                        count++;
-//                        buttonsToWin[x][y] = currentGame.getButtonGrid()[x][y];
-//                        if (count == numToWin) {
-//                            for (int k = 0; k < numToWin; k++) {
-//                                buttonsToWin[x - k][y - k].setBackground(Color.red);
-//                            }
-//                            return true;
-//                        }
-//                    } else {
-//                        count = 0;
-//                    }
-//                    x++;
-//                    y++;
-//                }
-//            }
-//        }
-//
-//        // Check reverse diagonals
-//        for (int i = 0; i <= BOARD_SIZE_DIAG - numToWin; i++){
-//            for (int j = BOARD_SIZE - 1; j >= numToWin - 1; j--) {
-//            int count = 0;
-//            int x = i, y = j;
-//            while (x < BOARD_SIZE_DIAG && y >= 0) {
-//                if (board[x][y] == player) {
-//                    count++;
-//                    buttonsToWin[x][y] = currentGame.getButtonGrid()[x][y];
-//                    if (count == numToWin) {
-//                        for (int k = 0; k < numToWin; k++) {
-//                            buttonsToWin[x - k][y + k].setBackground(Color.red);
-//                        }
-//                        return true;
-//                    }
-//                } else {
-//                    count = 0;
-//                }
-//                x++;
-//                y--;
-//            }
-//        }
-//    }
+        // Check for diagonal win
+        for (int i = 0; i < boardSize - winSequence + 1; i++) {
+            for (int j = 0; j < boardSize - winSequence + 1; j++) {
+                boolean win = true;
+                for (int k = 0; k < winSequence; k++) {
+                    if (board[i + k][j + k] != player) {
+                        win = false;
+                        break;
+                    }
+                }
+                if (win) {
+                    return true;
+                }
+            }
+        }
+        for (int i = 0; i < boardSize - winSequence + 1; i++) {
+            for (int j = winSequence - 1; j < boardSize; j++) {
+                boolean win = true;
+                for (int k = 0; k < winSequence; k++) {
+                    if (board[i + k][j - k] != player) {
+                        win = false;
+                        break;
+                    }
+                }
+                if (win) {
+                    return true;
+                }
+            }
+        }
 
-        // No win
         return false;
     }
+
 
 }
