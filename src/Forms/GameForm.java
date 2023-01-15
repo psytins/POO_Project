@@ -132,7 +132,7 @@ public class GameForm {
                 button.setBackground(new Color(231,111,81));
                 currentGame.getGrid()[pos1][pos2] = 2;
                 if(checkWin(2)){
-                    JOptionPane.showMessageDialog(null, player2.getUsername() + " WON");
+                    JOptionPane.showMessageDialog(null, player2.getUsername() + " WON!");
                     CancelGame();
                 }
                 ChangeTurn(player1);
