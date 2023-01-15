@@ -1,5 +1,7 @@
 package Classes;
 
+import javax.swing.*;
+
 public class Game {
 
     private Player playerOne;
@@ -12,6 +14,7 @@ public class Game {
 
     private int gridNumber;
     private int[][] grid;
+    private JButton[][] buttonGrid;
 
     private int gameOptions;
 
@@ -24,6 +27,8 @@ public class Game {
 
         //create grid
         this.grid = this.CreateGrid(gridNumber);
+
+        this.buttonGrid = new JButton[gridNumber][gridNumber];
     }
 
     private int[][] CreateGrid(int gridNumber){
@@ -41,6 +46,7 @@ public class Game {
     public int[][] getGrid() {
         return grid;
     }
+    public JButton[][] getButtonGrid() {return buttonGrid;}
 
     public Player getTurn() {
         return turn;

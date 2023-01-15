@@ -78,7 +78,7 @@
               <focusPainted value="false"/>
               <font name="Consolas" size="18" style="0"/>
               <foreground color="-744863"/>
-              <text value="Cancel"/>
+              <text value="Exit"/>
             </properties>
           </component>
           <component id="88a23" class="javax.swing.JButton" binding="drawButton">
