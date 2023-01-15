@@ -52,6 +52,14 @@ public class GameMenuForm {
                 StartGame();
             }
         });
+
+        exitButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ExitGame();
+            }
+        });
+
         gridSizeSlider.addChangeListener(new ChangeListener() {
             //Change label when grid size slider is changed
             @Override
@@ -110,5 +118,10 @@ public class GameMenuForm {
             Main.gameMenuFrame.dispatchEvent(new WindowEvent(Main.gameMenuFrame, WindowEvent.WINDOW_CLOSING));
         }
 
+    }
+
+    public void ExitGame(){
+        JOptionPane.showMessageDialog(mainPanel, "Thank you for playing!");
+        Main.gameMenuFrame.dispatchEvent(new WindowEvent(Main.gameMenuFrame, WindowEvent.WINDOW_CLOSING));
     }
 }
